@@ -4,7 +4,8 @@
     --color-primary: #F5385D;
 }
 
-input[type='text'], input[type='password'], input[type='email'] {
+input[type='text'], input[type='password'], input[type='email'],input[type='number'],
+textarea {
     @apply w-full border border-gray-300 py-2 px-3 my-2 rounded-2xl;
 }
 

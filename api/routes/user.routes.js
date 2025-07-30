@@ -61,6 +61,11 @@
     });
 
     
+    router.post('/logout', (req, res) =>{
+        res.cookie('token', '').json(true);
+    });
+
+    
     router.get('/profile', (req, res) => {
 
         const {token} = req.cookies;
