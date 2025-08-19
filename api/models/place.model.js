@@ -26,7 +26,7 @@ const placeSchema = new mongoose.Schema({
     checkIn : {
         type : Number
     },
-    CheckOut : {
+    checkOut : {
         type : Number
     },
     maxGuest : {

@@ -4,7 +4,6 @@ const imageDownloader = require('image-downloader');
 const path = require('path');
 const multer = require('multer');
 const fs = require('fs');
-const { replaceOne } = require('../models/user.model');
 
 
 router.post('/upload-by-link', async(req, res) => {
@@ -36,6 +35,7 @@ router.post('/uploadImage', imageMiddleware.array('images', 100), (req, res) => 
         uploadedFiles.push(newPath.replace('uploads\\', '').replace('uploads/', ''));
     }
     res.json(uploadedFiles);
-})
+});
+
 
 module.exports = router;

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useContext } from 'react';
 import { Link, Navigate } from 'react-router-dom'
-import { UserContext } from '../UserContext';
+import { UserContext } from '../contexts/UserContext';
 
 
 const LoginPage = () => {

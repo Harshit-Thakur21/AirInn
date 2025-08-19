@@ -9,6 +9,10 @@ textarea {
     @apply w-full border border-gray-300 py-2 px-3 my-2 rounded-2xl;
 }
 
+textarea {
+    height: 140px;
+}
+
 button.primary {
     background-color: #F5385D;
     @apply bg-primary p-2 w-full text-white rounded-2xl hover:bg-pink-600;
