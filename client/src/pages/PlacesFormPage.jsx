@@ -18,6 +18,7 @@
         const [checkIn, setCheckIn] = useState('');
         const [checkOut, setCheckOut] = useState('');
         const [maxGuest, setMaxGuets] = useState(1);
+        const [price, setPrice] = useState(100);
 
         const [redirect, setRedirect] = useState(false);
 
@@ -38,6 +39,7 @@
                 setCheckIn(data.checkIn);
                 setCheckOut(data.checkOut);
                 setMaxGuets(data.maxGuest);
+                setPrice(data.price)
             });
         }, [id])
 
@@ -70,7 +72,7 @@
             const placeData = {
                 title, address, addedImages,
                 description, perks, extraInfo,
-                checkIn, checkOut, maxGuest
+                checkIn, checkOut, maxGuest, price,
             };
 
             if(id)
@@ -126,7 +128,7 @@
                     <textarea value={extraInfo} onChange={e => setExtraInfo(e.target.value)} />
 
                     {preInput('Check In & Out times', 'Add Check In & Out Time, Remember to have some time window for cleaning between guests.')}
-                    <div className='grid gap-2 sm:grid-cols-3'>
+                    <div className='grid gap-2 grid-cols-2 md:grid-cols-4'>
                         <div>
                             <h3 className='mt-2 -mb-1'>Check In Time</h3>
                             <input type="text" value={checkIn} onChange={e => setCheckIn(e.target.value)} placeholder='14:00' />
@@ -138,6 +140,10 @@
                         <div>
                             <h3 className='mt-2 -mb-1'>Maximum number of Guests</h3>
                             <input type="number" value={maxGuest} onChange={e => setMaxGuets(e.target.value)} />
+                        </div>
+                        <div>
+                            <h3 className='mt-2 -mb-1'>Price per night</h3>
+                            <input type="number" value={price} onChange={e => setPrice(e.target.value)} />
                         </div>
                     </div>
                     <button className='primary my-4'>Save</button>

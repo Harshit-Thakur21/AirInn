@@ -8,7 +8,7 @@ router.post('/', (req, res) =>{
     const {
         title, address, addedImages, 
         description, perks, extraInfo,
-        checkIn, checkOut, maxGuest, 
+        checkIn, checkOut, maxGuest, price, 
     } = req.body;
 
 
@@ -26,6 +26,7 @@ router.post('/', (req, res) =>{
             checkIn, 
             checkOut, 
             maxGuest,
+            price,
         });
 
         res.json(placeDoc);
@@ -33,7 +34,7 @@ router.post('/', (req, res) =>{
 });
 
 
-router.get('/', (req, res) => {
+router.get('/user-places', (req, res) => {
     const {token} = req.cookies;
     jwt.verify(token, process.env.JWT_SECRET, {}, async (err, userData) => {
         const {id} = userData;
@@ -56,7 +57,7 @@ router.put('/', async (req, res) =>{
     const {
         id, title, address, addedImages, 
         description, perks, extraInfo,
-        checkIn, checkOut, maxGuest, 
+        checkIn, checkOut, maxGuest, price,
     } = req.body;
     
     jwt.verify(token, process.env.JWT_SECRET, {}, async (err, userData) => {
@@ -80,12 +81,13 @@ router.put('/', async (req, res) =>{
                 checkIn, 
                 checkOut, 
                 maxGuest,
+                price,
             });
             await placeDoc.save();
             res.json('ok');
         }
     });
-})
+});
 
 
 module.exports = router;
