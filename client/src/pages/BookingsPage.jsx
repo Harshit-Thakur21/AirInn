@@ -19,14 +19,14 @@ const BookingsPage = () => {
   return (
     <div>
       <AccountNav />
-      <div>
+      <div className="flex flex-col gap-4">
         {bookings?.length > 0 && bookings.map(booking => (
           <Link 
             to={`/account/bookings/${booking._id}`} 
             key={booking._id} 
             className='flex gap-4 bg-gray-200 rounded-2xl overflow-hidden'>
 
-            <div className='w-48'>
+            <div className='w-48 h-32 overflow'>
               {booking.place?.images?.length > 0 && (
                 <img
                   className='object-cover'
@@ -35,7 +35,7 @@ const BookingsPage = () => {
               )}
             </div>
 
-            <div className='py-3 pr-6 grow '>
+            <div className='py-3 pr-6 grow'>
               <h2 className='text-xl'>{booking.place.title}</h2>
 
               <div className='text-xl'>
