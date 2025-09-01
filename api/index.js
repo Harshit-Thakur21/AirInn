@@ -14,6 +14,9 @@ const placesRouter = require('./routes/places.routes');
 const homeRouter = require('./routes/home.routes');
 const bookingRouter = require('./routes/booking.routes');
 
+
+app.use(cookieParser());
+
 // Allow both dev + prod frontend URLs
 const allowedOrigins = [
   'http://localhost:5173',   // dev
@@ -31,7 +34,6 @@ app.use(cors({
   credentials: true
 }));
 
-app.use(cookieParser());
 app.use(express.json());
 app.use('/uploads', express.static(__dirname+'/uploads'));
 app.use(express.urlencoded({extended:true}));
