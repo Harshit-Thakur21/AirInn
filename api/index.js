@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use('/uploads', express.static(__dirname+'/uploads'));
 app.use(cors({
-  origin: 'http://localhost:5173', // frontend URL
+  origin: process.env.CLIENT_URL || 'http://localhost:5173', // frontend URL
   credentials: true
 }));
 app.use(express.urlencoded({extended:true}));
@@ -31,4 +31,5 @@ app.use('/home', homeRouter);
 app.use('/bookings', bookingRouter);
 
 
-app.listen(4000, console.log('Server Started on port 4000'));
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
