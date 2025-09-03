@@ -15,25 +15,33 @@ const homeRouter = require('./routes/home.routes');
 const bookingRouter = require('./routes/booking.routes');
 
 
-app.use(cookieParser());
 
-// Allow both dev + prod frontend URLs
-const allowedOrigins = [
-  'http://localhost:5173',   // dev
-  'https://air-inn.vercel.app' // prod
-];
+// // Allow both dev + prod frontend URLs
+// const allowedOrigins = [
+//   'http://localhost:5173',   // dev
+//   'https://air-inn.vercel.app' // prod
+// ];
 
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+//   credentials: true
+// }));
+
+
+// Later you add cors AGAIN
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: 'http://localhost:5173',//process.env.CLIENT_URL || 
   credentials: true
 }));
 
+
+app.use(cookieParser());
 app.use(express.json());
 app.use('/uploads', express.static(__dirname+'/uploads'));
 app.use(express.urlencoded({extended:true}));
@@ -46,5 +54,5 @@ app.use('/home', homeRouter);
 app.use('/bookings', bookingRouter);
 
 
-const PORT = process.env.PORT || 4000;
+const PORT = 4000; //process.env.PORT || 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
